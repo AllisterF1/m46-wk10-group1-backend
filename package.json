@@ -1,5 +1,5 @@
 {
-  "name": "m46-wk10-todo",
+  "name": "M46-WK10-GROUP1-BACKEND",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000m\u00004\u00006\u0000-\u0000w\u0000k\u00001\u00000\u0000-\u0000g\u0000r\u0000o\u0000u\u0000p\u00001\u0000-\u0000b\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
   "main": "index.js",
@@ -8,15 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mysql2": "^3.2.4",
-    "nodemon": "^2.0.22",
-    "sequelize": "^6.31.1"
-  }
+  "license": "ISC"
 }
