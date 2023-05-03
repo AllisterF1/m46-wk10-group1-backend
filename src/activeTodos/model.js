@@ -2,7 +2,7 @@ const {DataTypes} = require("sequelize")
 const connection = require("../db/connection")
 
 const ActiveTodo = connection.define("ActiveTodo", {
-    completedTasks: {
+    todo: {
         type: DataTypes.STRING,
         allowNull: false
     },
