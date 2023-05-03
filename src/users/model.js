@@ -7,17 +7,12 @@ const User = connection.define("User", {
         allowNull: false,
         unique: true,
     },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-    },
     password: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     
 },
-{indexes: [{unique:true, fields: ["username", "email"]}]})
+{indexes: [{unique:true, fields: ["username"]}]})
 
 module.exports = User
