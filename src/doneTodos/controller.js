@@ -1,16 +1,15 @@
 const DoneTodo = require("./model")
 
 const addDoneTodo = async(req, res) => {
+    currentUserId = req.authUser.dataValues.id
 	try {
-        // will use authcheck to get current user ID to ensure todo is being associated with the current user
-        // currentUserId = req.authUser.dataValues.id
-        // will include id in 201 status too
 		const todos = await DoneTodo.create({
-			todo: req.body.todo
+			todo: req.body.todo,
+            UserId: currentUserId
 		})
 		res.status(201).json({
 			message: "success",
-			todo: {todo: req.body.todo}})
+			todo: {id: currentUserId, todo: req.body.todo}})
 	}
 	catch (error) {
 		res.status(501).json({message: "error", error: error})
@@ -18,13 +17,12 @@ const addDoneTodo = async(req, res) => {
 }
 
 const deleteDoneTodo = async (req, res) => {
-    // will use authcheck to get current user ID to ensure todo is being associated with the current user
-    // currentUserId = req.authUser.dataValues.id
-    // will include id in 201 status too
+    currentUserId = req.authUser.dataValues.id
 	try {
 		const todos = await DoneTodo.destroy({
 			where: {
 				todo: req.body.todo,
+                UserId: currentUserId
 			}
 		})
 		res.status(204).json({message:"success"})
