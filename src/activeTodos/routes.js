@@ -4,6 +4,6 @@ const {addActiveTodo, deleteActiveTodo} = require("./controllers")
 const {tokenCheck} = require("../middleware")
 
 activeTodoRouter.post("/activetodos/addactivetodo", tokenCheck, addActiveTodo)
-activeTodoRouter.get("/activetodos/deleteactivetodo", tokenCheck, deleteActiveTodo)
+activeTodoRouter.post("/activetodos/deleteactivetodo", tokenCheck, deleteActiveTodo)
 
 module.exports = activeTodoRouter
