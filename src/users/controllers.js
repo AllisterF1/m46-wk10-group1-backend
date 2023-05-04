@@ -1,3 +1,6 @@
+const User = require("./model")
+const jwt = require("jsonwebtoken")
+
 const registerUser = async (req, res) => {
     try { 
         console.log("next called and inside controller")
