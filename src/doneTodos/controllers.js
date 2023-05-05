@@ -9,7 +9,7 @@ const addDoneTodo = async(req, res) => {
 		})
 		res.status(201).json({
 			message: "success",
-			todo: {id: currentUserId, todo: req.body.todo}})
+			todo: {id: todos.id, todo: req.body.todo}})
 	}
 	catch (error) {
 		res.status(501).json({message: "error", error: error})
@@ -17,19 +17,22 @@ const addDoneTodo = async(req, res) => {
 }
 
 const deleteDoneTodo = async (req, res) => {
-    currentUserId = req.authUser.dataValues.id
 	try {
 		const todos = await DoneTodo.destroy({
 			where: {
-				todo: req.body.todo,
-                UserId: currentUserId
+				id: req.body.id,
 			}
 		})
-		res.status(204).json({message:"success"})
+		console.log(todos)
+		if (todos == 0) {
+			res.status(404).json({message: "todo not found"})
+		}
+		else {
+			res.status(204).json({message:"success"})
+		}
 	}
 	catch (error) {
 		res.status(501).json({message: "error", error: error})
-        res.status(404).json({message: "todo not found"})
 	}
 }
 

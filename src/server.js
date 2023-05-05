@@ -19,12 +19,12 @@ app.use(express.json())
 
 const syncTables = () => {
     User.hasMany(DoneTodo)
-    User.hasMany(ActiveTodo)
     DoneTodo.belongsTo(User)
+    User.hasMany(ActiveTodo)
     ActiveTodo.belongsTo(User)
     DoneTodo.sync({alter: true})
     ActiveTodo.sync({alter: true})
-    User.sync()
+    User.sync({})
 }
 
 app.use(userRouter)
