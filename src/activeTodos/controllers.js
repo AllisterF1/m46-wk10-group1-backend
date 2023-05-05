@@ -17,12 +17,10 @@ const addActiveTodo = async(req, res) => {
 }
 
 const deleteActiveTodo = async (req, res) => {
-    currentUserId = req.authUser.dataValues.id
 	try {
 		const todos = await ActiveTodo.destroy({
 			where: {
-				todo: req.body.todo,
-                UserId: currentUserId
+				id: req.body.id,
 			}
 		})
 		res.status(204).json({message:"success"})
