@@ -9,7 +9,7 @@ const addActiveTodo = async(req, res) => {
 		})
 		res.status(201).json({
 			message: "success",
-			todo: {id: currentUserId, todo: req.body.todo}})
+			todo: {id: todos.id, todo: req.body.todo}})
 	}
 	catch (error) {
 		res.status(501).json({message: "error", error: error})

@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt")
 
 const { JsonWebTokenError } = require("jsonwebtoken")
 const ActiveTodo = require("../activeTodos/model")
+const DoneTodo = require("../doneTodos/model")
 
 const saltRounds = process.env.SALT_ROUNDS
 
@@ -22,7 +23,7 @@ const comparePass = async (req, res, next) => {
     try {
        
 
-        req.user = await User.findOne({where: {username: req.body.username}, include: ActiveTodo})      
+        req.user = await User.findOne({where: {username: req.body.username}, include: [ActiveTodo, DoneTodo]})      
 
         if (req.user === null) {
             throw new Error ("password or username doesn't match")
@@ -56,7 +57,7 @@ const tokenCheck = async (req, res, next) => {
         console.log("!!!!!")
         console.log(decodedToken)
 
-        const user = await User.findOne({where: {id: decodedToken.id}, include: ActiveTodo})
+        const user = await User.findOne({where: {id: decodedToken.id}, include: [ActiveTodo, DoneTodo]})
         console.log(user)
 
         console.log("!!!!!!!!!!")
