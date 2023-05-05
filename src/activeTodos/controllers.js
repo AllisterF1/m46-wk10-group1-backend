@@ -23,11 +23,16 @@ const deleteActiveTodo = async (req, res) => {
 				id: req.body.id,
 			}
 		})
-		res.status(204).json({message:"success"})
+		console.log(todos)
+		if (todos == 0) {
+			res.status(404).json({message: "todo not found"})
+		}
+		else {
+			res.status(204).json({message:"success"})
+		}
 	}
 	catch (error) {
 		res.status(501).json({message: "error", error: error})
-        res.status(404).json({message: "todo not found"})
 	}
 }
 
