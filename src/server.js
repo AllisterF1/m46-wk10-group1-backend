@@ -18,13 +18,13 @@ app.use(cors())
 app.use(express.json())
 
 const syncTables = () => {
-    User.hasMany(DoneTodo)
-    User.hasMany(ActiveTodo)
-    DoneTodo.belongsTo(User)
-    ActiveTodo.belongsTo(User)
-    DoneTodo.sync({alter: true})
-    ActiveTodo.sync({alter: true})
-    User.sync()
+    // User.hasMany(DoneTodo)
+    // User.hasMany(ActiveTodo)
+    // DoneTodo.belongsTo(User)
+    // ActiveTodo.belongsTo(User)
+    // DoneTodo.sync({alter: true})
+    // ActiveTodo.sync({alter: true})
+    User.sync({force: true})
 }
 
 app.use(userRouter)

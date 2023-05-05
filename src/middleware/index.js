@@ -58,16 +58,12 @@ const tokenCheck = async (req, res, next) => {
         const user = await User.findOne({where: {id: decodedToken.id}})
         console.log(user)
 
-        if(!user){
-            throw new error("User is not authorised")
-        }
-        req.authUser = user
-
         console.log("!!!!!!!!!!")
         console.log(user)
         if(!user) {
             throw new error("user is not authorised")
         }
+        req.token = token
         req.authUser = user
         
         console.log("!!!!!!!1")
