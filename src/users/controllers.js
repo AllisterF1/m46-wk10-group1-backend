@@ -1,4 +1,6 @@
 const User = require("./model")
+const ActiveTodo = require("../activeTodos/model")
+// const DoneTodo = require("../activeTodos/model")
 const jwt = require("jsonwebtoken")
 
 const registerUser = async (req, res) => {
@@ -25,8 +27,9 @@ const login = async (req, res) => {
         message: "success",
         user: {
           username: req.authUser.username,
-          token: req.token
-        }
+          token: req.token,
+        },
+        activeTodos: req.authUser.ActiveTodos.map(t => { return { id: t.id, todo: t.todo } })
       })
       return
       }
@@ -38,7 +41,8 @@ const login = async (req, res) => {
             user: {
                 username: req.user.username,
                 token : token
-            }
+            },
+            activeTodos: req.user.ActiveTodos.map(t => { return { id: t.id, todo: t.todo } })
         })
         return
     } catch (error) {
